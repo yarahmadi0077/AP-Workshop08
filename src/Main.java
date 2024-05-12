@@ -19,11 +19,10 @@ public class Main {
     private static String removeNoteMenu() {
         System.out.println("to back to menu enter 5 else enter the title");
         String title = scanner.nextLine();
-        if(title.equals("5"))
+        if( title.equals("5"))
             return "5";
         return (notePad.removeNote(title));
     }
-
     private static String exportNoteMenu() throws IOException {
         System.out.println("to back to menu enter 5 else enter the title");
         String title = scanner.nextLine();
