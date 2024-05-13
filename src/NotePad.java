@@ -13,6 +13,7 @@ public class NotePad {
         creationDates = new HashMap<>();
     }
 
+
     public String addNote(String title, String content) {
         if (notes.containsKey(title)) {
             return "duplicate-title";
