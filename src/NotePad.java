@@ -23,4 +23,36 @@ public class NotePad {
             return "note-added";
         }
     }
+
+    public String removeNote(String title) {
+        if (notes.containsKey(title)) {
+            notes.remove(title);
+            creationDates.remove(title);
+            return "note-removed";
+        } else {
+            return "notfound-note";
+        }
+    }
+
+    public void listNotes() {
+        for (String title : notes.keySet()) {
+            System.out.println("title:" + title + "date" + creationDates.get(title));
+        }
+    }
+
+
+    public void exportNote(String title) throws IOException {
+        if (notes.containsKey(title)) {
+            File exportDir = new File("export");
+            if (!exportDir.exists()) {
+                exportDir.mkdir();
+            }
+            File file = new File(exportDir, title + ".txt");
+            try (FileWriter writer = new FileWriter(file)) {
+                writer.write(notes.get(title));
+            }
+            System.out.println("a .txt file is exported");
+        } else {
+            System.out.println("not found title");
+        }
 }
